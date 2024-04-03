@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
+    <script src="charts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/bb6760f882.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Pokedex</title>
 </head>
-<body onload="takePokemon()">
-    <nav><h1>Pokedex</h1></nav>
+
+<body onload="takePokemon()" id="body">
+    <div id="loadingOverlay" class="loading-overlay d-none">
+        <img src="./img/logo.webp" alt="loading image" />
+        <span>Loading</span>
+    </div>
+    <nav onclick="closeCard()">
+        <img onclick="javascript:location.reload();" class="logo" src="img/logo.webp" alt="logo">
+        <h1 onclick="javascript:location.reload();">Pokedex</h1>
+        <div class="searchDiv">
+            <input onkeyup="search()" id="input" type="text" placeholder="search pokemons">
+            <button onclick="search()" class="searchButton">search</button>
+        </div>
+    </nav>
     <div class="content">
         <div class="card" id="card"></div>
     </div>
-    
+    <button id="moreButton" class="moreButton d-none" onclick="loadMore()">load more pokemons</button>
+    <button id="allPokemons" class="moreButton d-none" onclick="javascript:location.reload();">load all
+        pokemons</button>
+    <div onclick="closeCard()" class="oneCardDiv d-none" id="oneCardDiv">
+        <div onclick="event.stopPropagation()" class="oneCard" id="oneCard"></div>
+    </div>
+    <footer>
+        <p>@julia.sch96@hotmail.de</p>
+        <p>Made with ❤️</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
+
 </html>

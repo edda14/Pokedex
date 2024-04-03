@@ -1,51 +1,167 @@
 body {
-    width: 100vw;
-    height: 100vh;
     margin: 0px;
-    background-color: rgb(192, 192, 255);
+    background-color: rgb(255, 252, 243);
     overflow-x: hidden;
     font-family: 'Courier New', Courier, monospace;
-}
-nav {
-    width: 100vw;
-    height: 100px;
-    margin: 0px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    Padding-bottom: 0;
+}
+
+.moreButton {
+    width: 400px;
+    height: 70px;
+    font-size: 32px;
+    background-color: grey;
+    border-radius: 25px;
+    color: white;
+}
+
+.moreButton:hover {
+    cursor: pointer;
+    background-color: rgb(153, 153, 153);
+}
+
+input {
+    height: 30px;
+    margin-right: 0; 
+    font-size: 20px;
+}
+
+.searchButton {
+    height: 35px;
+    margin-left: 0;
+}
+
+ .searchDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(86, 105, 142);
-    color: rgb(255, 255, 0);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 24px;
+    height: 200px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+footer p {
+    font-size: 24px;
+}
+
+nav {
+    height: 200px;
+    width: 100%;
+    margin: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(47, 47, 47, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+  
+  .loading-overlay img {
+    width: 100px;
+    height: 100px;
+    animation: rotate 1.7s linear infinite;
+}
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loading-overlay span {
+    color: white;
+    padding: 20px;
+    font-size: 40px;
+  }
+
+.logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+nav h1 {
+    font-size: 36px;;
+    margin: 6px;
+}
+
+nav h1:hover {
+    cursor: pointer;
 }
 
 .pokedexCard {
-    width: 200px;
-    height: 280px;
-    background-color: blanchedalmond;
+    width: 320px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     align-self: start;
     justify-content: start;
-    border-radius: 16px;
+    border-radius: 25px;
+    border: 1px solid grey;
+}
+
+.pokedexCard:hover {
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 9px gray);
 }
 
 .pokedexCard img {
-    height: 160px;
-    margin-bottom: -20px;
+    height: 140px;
 }
 
 .pokedexCard h2 {
     text-align: center;
     margin-bottom: 24px;
-    margin: 4px;
+    margin: 2px;
+    font-size: 28px;
 }
 
 .card {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     gap: 40px;
     padding: 50px;
+    max-width: 1920px;
 }
 
 .divLeft {
@@ -53,7 +169,7 @@ nav {
     width: 88%;
     justify-content: end;
     padding-top: 8px;
-    margin-right: 18px 
+    margin-right: 18px
 }
 
 .divLeft b {
@@ -61,9 +177,392 @@ nav {
 }
 
 .cardinfo {
-    width: inherit;
-    height: 80px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 17px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+    padding: 12px;
 }
 
+.cardinfo p {
+    font-size: 16px;
+    margin: 0px;
+}
+
+.cardinfoDiv {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+}
+
+.cardinfoDiv b {
+    padding-top: 7px;
+    font-weight: 600;
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+.abilitySection {
+    padding: 6px;
+    border: 1px solid grey;
+    background-color: rgb(223, 223, 223);
+}
+
+.d-none {
+    display: none !important;
+}
+
+.oneCardDiv {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(255, 252, 243, 0.9);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.oneCard {
+    height: 770px;
+    width: 500px;
+    border: 1px solid rgba(0, 0, 0, 0.843);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.oneCard img {
+    max-height: 200px !important;
+    min-height: 200px !important;
+    max-width: 480px !important;
+}
+
+.oneCardInfo {
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 500px;
+    width: inherit;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    border-bottom: 3px groove rgba(39, 39, 39, 0.2);
+    margin-top: 14px;
+    margin-bottom: 14px;
+    height: auto;
+    width: 80%;
+}
+
+.about h2 {
+    margin: 0;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+.overflowHidden {
+    overflow-y: hidden;
+}
+
+th {
+    width: auto;
+    text-align: start;
+}
+
+th b {
+    margin: 0;
+    margin-bottom: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+th p {
+    margin: 0px;
+    margin-bottom: 4px;
+    color: rgb(0, 0, 0);
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+    margin-left: 60px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.stats {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+.stats h2 {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.about table {
+    width: 95%;
+}
+
+.myChart {
+    width: 442px !important;
+}
+
+.id {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.id h2 {
+    font-size: 32px;
+}
+
+.icon {
+    font-size: 32px;
+    color: black;
+    font-weight: 300;
+}
+
+.icon:hover {
+    cursor: pointer;
+    color: rgb(150, 150, 150);
+}
+
+.pictureAndRows {
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rowLeft {
+    font-size: 32px;
+    margin-left: 10px;
+}
+
+.rowLeft:hover {
+    cursor: pointer;
+    color: rgb(150, 150, 150);
+}
+
+.rowRight {
+    font-size: 32px;
+    margin-right: 10px;
+}
+
+.rowRight:hover {
+    cursor: pointer;
+    color: rgb(150, 150, 150);
+}
+
+
+@media (max-width: 1200px){
+    .pokedexCard {
+        width: 240px;
+        height: 360px;
+    }
+
+    .card {
+        padding: 14px;
+        justify-content: center;
+    }
+
+    .pokedexCard img {
+        height: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 14px;
+        justify-content: center;
+    }
+
+    .pokedexCard {
+        width: 280px;
+        height: 380px;
+    }
+
+    .pokedexCard img {
+        height: 140px;
+        
+    }
+
+    .moreButton {
+        width: 200px;
+        height: 50px;
+        font-size: 16px;;
+    }
+
+    footer p {
+        font-size: 18px;
+    }
+
+    nav h1 {
+        font-size: 24px;
+    }
+
+    input {
+        height: 20px;
+        margin-right: 0; 
+        font-size: 14px;
+    }
+    
+    .searchButton {
+        height: 25px;
+        margin-left: 0;
+    }
+
+    .oneCard {
+        width: 300px;
+        height: 420px;
+    }
+
+    .oneCard img {
+        max-height: 90px !important;
+        min-height: 90px !important;
+        max-width: 480px !important;
+    }
+
+    .oneCardInfo {
+        border-radius: 25px;
+        background-color: rgba(255, 255, 255, 0.5);
+        height: inherit;
+        width: inherit;
+    }
+    
+    .about {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        border-bottom: 3px groove rgba(39, 39, 39, 0.2);
+        margin-top: 4px;
+        margin-bottom: 0px;
+        height: auto;
+        width: 80%;
+    }
+    
+    .about h2 {
+        margin: 0;
+        margin-bottom: 4px;
+        margin-top: 4px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .stats h2 {
+        font-size: 16px;
+    }
+    
+    th b {
+        margin: 0;
+        margin-bottom: 2px;
+        font-family: 'Courier New', Courier, monospace;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+    }
+    
+    th p {
+        margin: 0px;
+        margin-bottom: 2px;
+        color: rgb(0, 0, 0);
+        font-family: 'Courier New', Courier, monospace;
+        font-style: normal;
+        margin-left: 20px;
+        font-weight: 500;
+        font-size: 11px;
+    }
+    
+    .stats {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        margin-top: 2px;
+        margin-bottom: 0;
+    }
+    
+    .stats h2 {
+        margin: 0;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 600;
+        margin-bottom: 4px;
+        margin-top: 4px;
+    }
+    
+    .about table {
+        width: 95%;
+    
+    }
+    
+    .myChart {
+        width: 290px !important;
+
+    }
+    
+    .id {
+        width: 95%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .id h2 {
+        font-size: 16px;
+        margin: 0;
+    }
+    
+    .icon {
+        font-size: 14px;
+        color: black;
+        font-weight: 300;
+    }
+    
+
+    
+    .rowLeft {
+        font-size: 14px;
+        margin-left: 4px;
+    }
+
+    .rowLeftDiv {
+        width: 33px;
+    }
+    
+   
+    .rowRight {
+        font-size: 14px;
+        margin-right: 4px;
+    }
+}
