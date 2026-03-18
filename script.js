@@ -8,7 +8,7 @@ async function takePokemon() {
     let response = await fetch(url);
     let responseAsJson = await response.json();
     let currentPokemon = responseAsJson['results'];
-    for (let p = 0; p < 250; p++) {
+    for (let p = 0; p < 200; p++) {
         await getPokemon(currentPokemon, p);
     } 
     showHideOverlay()
@@ -21,7 +21,7 @@ async function getPokemon(currentPokemon, p) {
     let pokemon = await response.json();
     pokemons.push(pokemon);
     pokemons[p]["id"].sort;
-    if(p === 249){
+    if(p === 199){
         renderCart();
     }
 }
