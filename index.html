@@ -38,13 +38,55 @@
         <div class="card" id="card"></div>
     </div>
     <button id="moreButton" class="moreButton d-none" onclick="loadMore()">load more pokemons</button>
-    <button id="allPokemons" class="moreButton d-none" onclick="javascript:location.reload();">load all
-        pokemons</button>
     <div onclick="closeCard()" class="oneCardDiv d-none" id="oneCardDiv">
         <div onclick="event.stopPropagation()" class="oneCard" id="oneCard"></div>
     </div>
+    <div class="modal d-none" id="modal" onclick="closeImpressum()">
+        <div class="impressumDiv" onclick="event.stopPropagation()">
+            <div class="closeImpressumIcon">
+              <i onclick="closeImpressum()" class="fa-regular fa-circle-xmark icon"></i>
+            </div>
+            <div class="impressumContent">
+                <h2>Impressum</h2>
+                <p>Angaben gemäß § 5 TMG</p> <br> <br>
+                <p>Julia Schäffer</p>
+                <p>Petersbergstraße 6</p>
+                <p>83026 Rosenheim</p>
+                <p>Deutschland</p><br> <br>
+                <h3>Kontakt</h3><br>
+                <p>kontakt@julsino.de</p><br>
+                <h3>Verantwortlich für Inhalte</h3><br>
+                <p>Julia Schäffer</p><br>
+                <h3>Haftung für Inhalte</h3><br>
+                <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit
+                    und
+                    Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+                    Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+                    allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+                    verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.</p><br>
+                <h3>Haftung für Links</h3><br>
+                <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss
+                    haben.
+                    Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.</p><br>
+                <h3>Urheberrecht</h3><br>
+                <p>Die durch die Seitenbetreiberin erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+                    deutschen
+                    Urheberrecht.</p><br>
+                <h3>Hinweis zum Projekt</h3><br>
+                <p>Dieses Projekt ist ein nicht-kommerzielles Portfolio-Projekt und dient ausschließlich
+                    Demonstrationszwecken.
+
+                    Die verwendeten Daten stammen von der öffentlichen API: https://pokeapi.co/
+
+                    Pokémon ist eine eingetragene Marke von Nintendo, Game Freak und Creatures Inc.</p>
+
+
+            </div>
+        </div>
+    </div>
     <footer>
-        <p>@julia.sch96@hotmail.de</p>
+        <p>@kontakt@julsino.de</p>
+        <p id="impressum" onclick="openImpressum()" class="impressumBtn">Impressum</p>
         <p>Made with ❤️</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

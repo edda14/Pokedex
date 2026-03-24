@@ -1,38 +1,49 @@
 let pokemons = [];
 let maxPokemons = 18;
 let minPokemons = 1;
+let allPokemonList = [];
+let initialLoadCount = 30;
+let backgroundLoadStartIndex = 30;
+let totalPokemonToLoad = 250;
 
 async function takePokemon() {
-    showHideOverlay()
+    showOverlay();
     let url = 'https://pokeapi.co/api/v2/pokemon?limit=1000&offset=0';
     let response = await fetch(url);
     let responseAsJson = await response.json();
-    let currentPokemon = responseAsJson['results'];
-    for (let p = 0; p < 200; p++) {
-        await getPokemon(currentPokemon, p);
-    } 
-    showHideOverlay()
+    allPokemonList = responseAsJson['results'];
+    await loadInitialPokemons();
+    renderCart();
+    hideOverlay();
+    loadRemainingPokemonsInBackground();
 }
 
+async function loadInitialPokemons() {
+    for (let p = 0; p < initialLoadCount; p++) {
+        await getPokemon(allPokemonList, p);
+    }
+}
+
+async function loadRemainingPokemonsInBackground() {
+    for (let p = backgroundLoadStartIndex; p < totalPokemonToLoad; p++) {
+        await getPokemon(allPokemonList, p);
+    }
+}
 
 async function getPokemon(currentPokemon, p) {
     let url = currentPokemon[p]['url'];
     let response = await fetch(url);
     let pokemon = await response.json();
     pokemons.push(pokemon);
-    pokemons[p]["id"].sort;
-    if(p === 199){
-        renderCart();
-    }
+    pokemons.sort((a, b) => a.id - b.id);
 }
 
-function showHideOverlay() {
-    let overlay = document.getElementById("loadingOverlay");
-    if (overlay.classList.contains("d-none")) {
-      overlay.classList.remove("d-none");
-    } else {
-      overlay.classList.add("d-none");
-    }
+function showOverlay() {
+    document.getElementById("loadingOverlay").classList.remove("d-none");
+}
+
+function hideOverlay() {
+    document.getElementById("loadingOverlay").classList.add("d-none");
 }
 
 function search(){
@@ -55,20 +66,31 @@ function search(){
     })}
 } 
 
-
 function renderCart() {
-    for (let b = minPokemons; b <= maxPokemons; b++){
-    template(b-1);
-    abilitiesCard(b-1);
-    backgroundCardColor(b-1);
+    document.getElementById('card').innerHTML = "";
+    for (let b = 1; b <= maxPokemons; b++) {
+        if (!pokemons[b - 1]) {
+            break;
+        }
+        template(b - 1);
+        abilitiesCard(b - 1);
+        backgroundCardColor(b - 1);
     }
-    document.getElementById('moreButton').classList.remove('d-none');
+    updateLoadMoreButton();
 }
 
 function loadMore() {
-    minPokemons = minPokemons + 24;
     maxPokemons = maxPokemons + 24;
     renderCart();
+}
+
+function updateLoadMoreButton() {
+    let moreButton = document.getElementById('moreButton');
+    if (maxPokemons >= pokemons.length) {
+        moreButton.classList.add('d-none');
+    } else {
+        moreButton.classList.remove('d-none');
+    }
 }
 
 function abilitiesCard(p) {
@@ -236,4 +258,14 @@ function backgroundBigCardColor(p) {
     } else if (color == `rock`) {
         bigCard.style = 'background-color: grey;';
     }
+}
+
+function openImpressum() {
+    document.getElementById('modal').classList.remove('d-none');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImpressum() {
+    document.getElementById('modal').classList.add('d-none');
+    document.body.style.overflow = 'auto';
 }
